@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Product</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2>Sửa sản phẩm</h2>
+        <% if (errors && errors.length > 0) { %>
+                <div class="alert alert-danger">
+                <% errors.forEach(function(error) { %>
+                    <p class="mb-0"><%= error %></p>
+                <% }) %>
+                </div>
+            <% } %>
+      <form
+        action="/products/edit/<%= product.id %>"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label>Tên sản phẩm</label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            value="<%= product.name %>"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Hình ảnh</label>
+          <input type="file" name="image" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label>Giá</label>
+          <input
+            type="number"
+            name="price"
+            class="form-control"
+            value="<%= product.price %>"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Số lượng</label>
+          <input
+            type="number"
+            name="quantity"
+            class="form-control"
+            value="<%= product.quantity %>"
+            required
+          />
+        </div>
+
+        <button class="btn btn-primary">Cập nhật</button>
+
+        <a href="/products" class="btn btn-secondary">Quay lại</a>
+      </form>
+    </div>
+  </body>
+</html>

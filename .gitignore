@@ -1,0 +1,4 @@
+Products/node_modules/
+Products/.env
+*.log
+.DS_Store
